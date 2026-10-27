@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Test payment – Event registration</title>
+<style>
+:root{--bg:#f6f7f4;--card:#fff;--ink:#16201b;--muted:#5b675f;--line:#d9dfd9;--accent:#0f6b4f;--accent-ink:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1512;--card:#18211c;--ink:#eaf1ec;--muted:#9fb0a5;--line:#2b3830;--accent:#4cc896;--accent-ink:#06150e}}
+:root[data-theme="dark"]{--bg:#0f1512;--card:#18211c;--ink:#eaf1ec;--muted:#9fb0a5;--line:#2b3830;--accent:#4cc896;--accent-ink:#06150e}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Georgia,"Times New Roman",serif;line-height:1.55;display:flex;justify-content:center;padding:24px 16px}
+main{width:100%;max-width:440px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px 24px}
+h1{font-size:1.5rem;line-height:1.25;margin:0 0 6px}
+p{margin:0 0 14px;color:var(--muted)}
+.amount{font-size:3rem;font-weight:700;margin:18px 0 4px;color:var(--ink)}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-family:system-ui,sans-serif;font-size:.95rem}
+.row span:first-child{color:var(--muted)}
+.row span:last-child{text-align:right;word-break:break-all}
+.pay{display:block;text-align:center;text-decoration:none;background:var(--accent);color:var(--accent-ink);font:600 1.05rem system-ui,sans-serif;padding:15px;border-radius:10px;margin:20px 0 10px}
+.pay:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+button{width:100%;background:none;border:1px solid var(--line);color:var(--ink);font:500 .95rem system-ui,sans-serif;padding:12px;border-radius:10px;cursor:pointer}
+.note{font:.85rem/1.5 system-ui,sans-serif;margin:16px 0 0}
+</style>
+</head>
+<body>
+<main>
+<h1>Test registration payment</h1>
+<p>This is a test. Pay ₹10 to check that the payment flow works.</p>
+<div class="amount">₹10</div>
+<div class="row"><span>Pay to</span><span id="payee">Event Registration</span></div>
+<div class="row"><span>UPI ID</span><span id="upiid">9959129903@pthdfc</span></div>
+
+<a class="pay" id="payBtn" href="#" target="_top">Pay ₹10 with UPI</a>
+<button id="copyBtn" type="button">Copy UPI ID</button>
+
+<p class="note" id="msg">Tap Pay on your phone to choose GPay, PhonePe, Paytm or another UPI app. After paying, go back to the registration form and enter your UPI transaction ID.</p>
+</main>
+<script>
+(function(){
+  var UPI_ID="9959129903@pthdfc", NAME="Event Registration", AMOUNT="10.00", NOTE="Test registration";
+  var link="upi://pay?pa="+encodeURIComponent(UPI_ID)+"&pn="+encodeURIComponent(NAME)+"&am="+AMOUNT+"&cu=INR&tn="+encodeURIComponent(NOTE);
+  document.getElementById("payBtn").setAttribute("href",link);
+  var msg=document.getElementById("msg");
+  document.getElementById("copyBtn").addEventListener("click",function(){
+    try{
+      navigator.clipboard.writeText(UPI_ID).then(function(){msg.textContent="UPI ID copied. Paste it in your UPI app and pay ₹10.";},function(){msg.textContent="Could not copy. UPI ID: "+UPI_ID;});
+    }catch(e){msg.textContent="Could not copy. UPI ID: "+UPI_ID;}
+  });
+})();
+</script>
+</body>
+</html>
