@@ -22,7 +22,6 @@ p{margin:0 0 14px;color:var(--muted)}
 .pay{display:block;text-align:center;text-decoration:none;background:var(--accent);color:var(--accent-ink);font:600 1.05rem system-ui,sans-serif;padding:15px;border-radius:10px;margin:20px 0 10px}
 .pay:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 button{width:100%;background:none;border:1px solid var(--line);color:var(--ink);font:500 .95rem system-ui,sans-serif;padding:12px;border-radius:10px;cursor:pointer}
-.alt{background:none;color:var(--ink);border:1px solid var(--line);margin-top:0}
 .note{font:.85rem/1.5 system-ui,sans-serif;margin:16px 0 0}
 </style>
 </head>
@@ -41,10 +40,9 @@ button{width:100%;background:none;border:1px solid var(--line);color:var(--ink);
 </main>
 <script>
 (function(){
-  var UPI_ID="karunkumar.p08@oksbi", NAME="Karun Kumar", AMOUNT="10.00", NOTE="Test registration";
-  var link="upi://pay?pa="+encodeURIComponent(UPI_ID)+"&pn="+encodeURIComponent(NAME)+"&am="+AMOUNT+"&cu=INR&tn="+encodeURIComponent(NOTE);
-  var linkNoAmt="upi://pay?pa="+encodeURIComponent(UPI_ID)+"&pn="+encodeURIComponent(NAME)+"&cu=INR&tn="+encodeURIComponent(NOTE);
-  document.getElementById("payBtn").setAttribute("href",linkNoAmt);
+  var UPI_ID="karunkumar.p08@oksbi", NAME="Karun Kumar", NOTE="Test registration";
+  var link="upi://pay?pa="+encodeURIComponent(UPI_ID)+"&pn="+encodeURIComponent(NAME)+"&cu=INR&tn="+encodeURIComponent(NOTE);
+  document.getElementById("payBtn").setAttribute("href",link);
   var msg=document.getElementById("msg");
   document.getElementById("copyBtn").addEventListener("click",function(){
     try{
