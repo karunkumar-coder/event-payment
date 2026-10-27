@@ -22,6 +22,7 @@ p{margin:0 0 14px;color:var(--muted)}
 .pay{display:block;text-align:center;text-decoration:none;background:var(--accent);color:var(--accent-ink);font:600 1.05rem system-ui,sans-serif;padding:15px;border-radius:10px;margin:20px 0 10px}
 .pay:focus-visible,button:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
 button{width:100%;background:none;border:1px solid var(--line);color:var(--ink);font:500 .95rem system-ui,sans-serif;padding:12px;border-radius:10px;cursor:pointer}
+.alt{background:none;color:var(--ink);border:1px solid var(--line);margin-top:0}
 .note{font:.85rem/1.5 system-ui,sans-serif;margin:16px 0 0}
 </style>
 </head>
@@ -30,17 +31,17 @@ button{width:100%;background:none;border:1px solid var(--line);color:var(--ink);
 <h1>Test registration payment</h1>
 <p>This is a test. Pay ₹10 to check that the payment flow works.</p>
 <div class="amount">₹10</div>
-<div class="row"><span>Pay to</span><span id="payee">Event Registration</span></div>
+<div class="row"><span>Pay to</span><span id="payee">Karun Kumar</span></div>
 <div class="row"><span>UPI ID</span><span id="upiid">9959129903@pthdfc</span></div>
 
 <a class="pay" id="payBtn" href="#" target="_top">Pay ₹10 with UPI</a>
 <button id="copyBtn" type="button">Copy UPI ID</button>
 
-<p class="note" id="msg">Tap Pay on your phone to choose GPay, PhonePe, Paytm or another UPI app. After paying, go back to the registration form and enter your UPI transaction ID.</p>
+<p class="note" id="msg">Tap the button to open your UPI app with ₹10 already filled in. After paying, go back to the registration form and enter your UPI transaction ID.</p>
 </main>
 <script>
 (function(){
-  var UPI_ID="9959129903@pthdfc", NAME="Event Registration", AMOUNT="10.00", NOTE="Test registration";
+  var UPI_ID="9959129903@pthdfc", NAME="Karun Kumar", AMOUNT="10.00", NOTE="Test registration";
   var link="upi://pay?pa="+encodeURIComponent(UPI_ID)+"&pn="+encodeURIComponent(NAME)+"&am="+AMOUNT+"&cu=INR&tn="+encodeURIComponent(NOTE);
   document.getElementById("payBtn").setAttribute("href",link);
   var msg=document.getElementById("msg");
