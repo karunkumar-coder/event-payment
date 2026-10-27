@@ -32,7 +32,7 @@ button{width:100%;background:none;border:1px solid var(--line);color:var(--ink);
 <p>This is a test. Pay ₹10 to check that the payment flow works.</p>
 <div class="amount">₹10</div>
 <div class="row"><span>Pay to</span><span id="payee">Karun Kumar</span></div>
-<div class="row"><span>UPI ID</span><span id="upiid">9959129903@pthdfc</span></div>
+<div class="row"><span>UPI ID</span><span id="upiid">karunkumar.p08@oksbi</span></div>
 
 <a class="pay" id="payBtn" href="#" target="_top">Pay ₹10 with UPI</a>
 <button id="copyBtn" type="button">Copy UPI ID</button>
@@ -41,7 +41,7 @@ button{width:100%;background:none;border:1px solid var(--line);color:var(--ink);
 </main>
 <script>
 (function(){
-  var UPI_ID="9959129903@pthdfc", NAME="Karun Kumar", AMOUNT="10.00", NOTE="Test registration";
+  var UPI_ID="karunkumar.p08@oksbi", NAME="Karun Kumar", AMOUNT="10.00", NOTE="Test registration";
   var link="upi://pay?pa="+encodeURIComponent(UPI_ID)+"&pn="+encodeURIComponent(NAME)+"&am="+AMOUNT+"&cu=INR&tn="+encodeURIComponent(NOTE);
   document.getElementById("payBtn").setAttribute("href",link);
   var msg=document.getElementById("msg");
