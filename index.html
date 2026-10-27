@@ -34,16 +34,17 @@ button{width:100%;background:none;border:1px solid var(--line);color:var(--ink);
 <div class="row"><span>Pay to</span><span id="payee">Karun Kumar</span></div>
 <div class="row"><span>UPI ID</span><span id="upiid">karunkumar.p08@oksbi</span></div>
 
-<a class="pay" id="payBtn" href="#" target="_top">Pay ₹10 with UPI</a>
+<a class="pay" id="payBtn" href="#" target="_top">Pay with UPI (enter ₹10)</a>
 <button id="copyBtn" type="button">Copy UPI ID</button>
 
-<p class="note" id="msg">Tap the button to open your UPI app with ₹10 already filled in. After paying, go back to the registration form and enter your UPI transaction ID.</p>
+<p class="note" id="msg">Tap the button to open your UPI app, then type ₹10 and pay. If the button doesn’t work, tap Copy UPI ID, open any UPI app, choose Pay by UPI ID, paste it and pay ₹10. After paying, go back to the registration form and enter your UPI transaction ID.</p>
 </main>
 <script>
 (function(){
   var UPI_ID="karunkumar.p08@oksbi", NAME="Karun Kumar", AMOUNT="10.00", NOTE="Test registration";
   var link="upi://pay?pa="+encodeURIComponent(UPI_ID)+"&pn="+encodeURIComponent(NAME)+"&am="+AMOUNT+"&cu=INR&tn="+encodeURIComponent(NOTE);
-  document.getElementById("payBtn").setAttribute("href",link);
+  var linkNoAmt="upi://pay?pa="+encodeURIComponent(UPI_ID)+"&pn="+encodeURIComponent(NAME)+"&cu=INR&tn="+encodeURIComponent(NOTE);
+  document.getElementById("payBtn").setAttribute("href",linkNoAmt);
   var msg=document.getElementById("msg");
   document.getElementById("copyBtn").addEventListener("click",function(){
     try{
